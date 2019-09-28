@@ -1,0 +1,26 @@
+//INSERT VALUES
+var params = {
+    TableName: 'Envio',
+    Item: {
+        id: '1' ,
+        fechaAlta: new Date().toISOString(),
+        destino: 'Mendoza', 
+        email: 'primer@gmail.com',
+        pendiente: new Date().toISOString()
+    }
+};
+docClient.put(params, function(err, data){
+    if(err) ppJson(err);
+    else ppJson(data);
+});
+
+//SCAN ALL VALUES
+var params = {
+    TableName: 'Envio',
+    Limit: 10,
+    
+};
+dynamodb.scan(params, function(err, data){
+    if(err) ppJson(err);
+    else ppJson(data);
+});
